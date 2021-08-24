@@ -1,0 +1,14 @@
+<p class="h1">Proveedores</p>
+
+<div class="row">
+    <div class="col" *ngFor="let proveedor of proveedores">
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-header"> Proveedor: {{ proveedor.proveedor }}</div>
+            <div class="card-body">
+                <p class="card-text"> Vende: {{ proveedor.vende }}</p>
+                <p class="card-text"> Dir: {{ proveedor.dir }}</p>
+                <p class="card-text"> Telf: {{ proveedor.telf }}</p>
+            </div>
+        </div>
+    </div>
+</div>
