@@ -7,6 +7,9 @@ import { HeaderComponent } from './header/header.component';
 import { DirectivaComponent } from './directiva/directiva.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClienteService } from './clientes/cliente.service';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { RouterModule } from '@angular/router';
+import { ProveedorService } from './proveedores/proveedor.service';
 
 @NgModule({
   declarations: [
@@ -14,12 +17,20 @@ import { ClienteService } from './clientes/cliente.service';
     HeaderComponent,
     FooterComponent,
     DirectivaComponent,
-    ClientesComponent
+    ClientesComponent,
+    ProveedoresComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot([
+      { path: 'clientes', component: ClientesComponent },
+      { path: 'proveedores', component: ProveedoresComponent }
+    ])
   ],
-  providers: [ClienteService],
+  providers: [
+    ClienteService,
+    ProveedorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
