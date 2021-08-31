@@ -10,6 +10,16 @@ import { ClienteService } from './clientes/cliente.service';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { RouterModule } from '@angular/router';
 import { ProveedorService } from './proveedores/proveedor.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormComponent } from './clientes/form.component'
+import { FormsModule } from '@angular/forms';
+
+const ROUTES = [
+  { path: 'clientes', component: ClientesComponent },
+  { path: 'proveedores', component: ProveedoresComponent },
+  { path: 'form', component: FormComponent },
+  { path: '', component: DirectivaComponent }
+]
 
 @NgModule({
   declarations: [
@@ -18,14 +28,14 @@ import { ProveedorService } from './proveedores/proveedor.service';
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
-    ProveedoresComponent
+    ProveedoresComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      { path: 'clientes', component: ClientesComponent },
-      { path: 'proveedores', component: ProveedoresComponent }
-    ])
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [
     ClienteService,
