@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Cliente } from './cliente';
-import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 
 @Injectable({
@@ -9,11 +9,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'
 })
 export class ClienteService {
 
-  private urlEndPoint: string = 'http://localhost:8080/api/clientes';
+  private urlEndPoint: string = 'http://localhost:8080/api/clientes'
+  private urlCreate: string = 'http://localhost:8080/api/cliente'
+  private httpHeaders = new HttpHeaders({ 'Content-Type':'application/json' })
 
   constructor(private http:HttpClient) { }
 
   getClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(this.urlEndPoint);
+    return this.http.get<Cliente[]>(this.urlEndPoint)
+  }
+
+  create(cliente: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>(
+      this.urlCreate, cliente, {headers: this.httpHeaders}
+    )
   }
 }
