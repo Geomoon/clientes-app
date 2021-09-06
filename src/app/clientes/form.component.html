@@ -2,8 +2,8 @@
     <div class="card-header">{{ titulo }}</div>
     <div class="card-body">
 
-        <form (ngSubmit)="create()" #form="ngForm" >
-            <div class="form-group row">
+        <form #form="ngForm" >
+            <div class="form-group row mb-3">
                 <label for="" class="col-form-label col-sm-2">Nombre</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" name="nombre" [(ngModel)]="cliente.nombre" required minlength="3" #nombre="ngModel">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label for="" class="col-form-label col-sm-2">Apellido</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" name="apellido" [(ngModel)]="cliente.apellido" required minlength="1" #apellido="ngModel">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label for="" class="col-form-label col-sm-2">Email</label>
                 <div class="col-sm-6">
                     <input type="email" class="form-control" name="email" [(ngModel)]="cliente.email" required email minlength="6" #email="ngModel">
@@ -32,7 +32,10 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-6">
-                    <button class="btn btn-primary" [disabled]="!form.valid">Crear</button>
+                    <button class="btn btn-primary" *ngIf="cliente.id else button_crear"  (click)="update()" [disabled]="!form.valid">Actualizar</button>
+                    <ng-template #button_crear>
+                        <button class="btn btn-primary" (click)="create()" [disabled]="!form.valid">Crear</button>
+                    </ng-template>
                 </div>
             </div>
         </form>
