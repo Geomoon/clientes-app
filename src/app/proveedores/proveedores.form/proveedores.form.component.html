@@ -1,0 +1,53 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">{{ titulo }}</div>
+    <div class="card-body">
+
+        <form #form="ngForm" >
+            <div class="form-group row mb-3">
+                <label for="" class="col-form-label col-sm-2">Proveedor</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="proveedor" [(ngModel)]="proveedor.proveedor" required minlength="3" #nombre="ngModel">
+                    <div class="alert alert-danger" *ngIf="nombre.invalid">
+                        <div>Debe rellenar el campo</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="" class="col-form-label col-sm-2">Vende</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="vende" [(ngModel)]="proveedor.vende" required minlength="1" #vende="ngModel">
+                    <div class="alert alert-danger" *ngIf="vende.invalid">
+                        <div>Debe rellenar el campo</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="" class="col-form-label col-sm-2">Dirección</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="dir" [(ngModel)]="proveedor.dir" required minlength="6" #dir="ngModel">
+                    <div class="alert alert-danger" *ngIf="dir.invalid">
+                        <div>Debe rellenar el campo y tener un formato correcto</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label for="" class="col-form-label col-sm-2">Teléfono</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="telf" [(ngModel)]="proveedor.telf" required minlength="6" #telf="ngModel">
+                    <div class="alert alert-danger" *ngIf="telf.invalid">
+                        <div>Debe rellenar el campo y tener un formato correcto</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" *ngIf="proveedor.id else button_crear"  (click)="update()" [disabled]="!form.valid">Actualizar</button>
+                    <ng-template #button_crear>
+                        <button class="btn btn-primary" (click)="create()" [disabled]="!form.valid">Crear</button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

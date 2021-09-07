@@ -13,12 +13,15 @@ import { ProveedorService } from './proveedores/proveedor.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './clientes/form.component'
 import { FormsModule } from '@angular/forms';
+import { ProveedoresFormComponent } from './proveedores/proveedores.form/proveedores.form.component';
 
 const ROUTES = [
   { path: 'clientes', component: ClientesComponent },
   { path: 'proveedores', component: ProveedoresComponent },
   { path: 'clientes/form', component: FormComponent },
   { path: 'clientes/form/:id', component: FormComponent },
+  { path: 'proveedores/form', component: ProveedoresFormComponent },
+  { path: 'proveedores/form/:id', component: ProveedoresFormComponent },
   { path: '', component: DirectivaComponent }
 ]
 
@@ -30,7 +33,8 @@ const ROUTES = [
     DirectivaComponent,
     ClientesComponent,
     ProveedoresComponent,
-    FormComponent
+    FormComponent,
+    ProveedoresFormComponent
   ],
   imports: [
     BrowserModule,

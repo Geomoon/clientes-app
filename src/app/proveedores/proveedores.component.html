@@ -1,5 +1,5 @@
 <p class="h1">Proveedores</p>
-
+<button [routerLink]="['/proveedores/form']" type="button" class="btn btn-primary">Crear proveedor</button>
 <div class="row">
     <div class="col" *ngFor="let proveedor of proveedores">
         <div class="card text-dark bg-light mb-3">
@@ -8,6 +8,10 @@
                 <p class="card-text"> Vende: {{ proveedor.vende }}</p>
                 <p class="card-text"> Dir: {{ proveedor.dir }}</p>
                 <p class="card-text"> Telf: {{ proveedor.telf }}</p>
+            </div>
+            <div class="card-footer">
+                <button [routerLink]="['/proveedores/form', proveedor.id]" type="button" class="btn btn-secondary me-2">Editar</button>
+                <button (click)="delete(proveedor)" type="button" class="btn btn-danger me-2">Eliminar</button>
             </div>
         </div>
     </div>

@@ -1,4 +1,5 @@
-export class Proveedor {
+export class Proveedor { 
+    id?: number
     proveedor?: string
     vende?: string
     dir?: string

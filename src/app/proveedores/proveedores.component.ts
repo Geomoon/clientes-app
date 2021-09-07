@@ -14,7 +14,16 @@ export class ProveedoresComponent implements OnInit {
   constructor(private proveedorService: ProveedorService) { }
 
   ngOnInit(): void {
-    this.proveedores = this.proveedorService.getProveedores()
+    this.proveedorService.getProveedores()
+      .subscribe(proveedores => this.proveedores = proveedores)
+  }
+
+  delete(proveedor: Proveedor): void {
+    let confirmacion: boolean = confirm(`¿Eliminar proveedor ${proveedor.proveedor}?`)
+    if (confirmacion) {
+      this.proveedorService.delete(proveedor)
+      this.proveedores = this.proveedores.filter(p => p != proveedor)
+    }
   }
 
 }
